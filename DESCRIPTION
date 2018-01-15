@@ -1,9 +1,16 @@
 Package: read.so
-Title: What the Package Does (one line, title case)
+Title: Read Tables from Stack Overlow Questions into R
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Edward", "Visel", email = "edward.visel@gmail.com", role = c("aut", "cre"))
+Description: Sometimes you see a really interesting question on Stack Overlow, 
+    but the asker only presents the data as a presentation-style table instead 
+    of as runnable R code. Fear no more! read.so will read even the most 
+    heinous tables into a data frame in a trice.
 Depends: R (>= 3.4.3)
-License: What license is it under?
+Imports: readr
+Suggests: clipr, testthat
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1.9000
