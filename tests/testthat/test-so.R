@@ -1,6 +1,6 @@
 context("so")
 
-iris_head <- structure(list(
+iris.head <- structure(list(
     Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4, 4.6, 5, 4.4, 4.9),
     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1),
     Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5),
@@ -11,7 +11,7 @@ iris_head <- structure(list(
     class = "data.frame",
     row.names = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
 
-iris_head_tibble <- structure(list(
+iris_head <- structure(list(
     Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4, 4.6, 5, 4.4, 4.9),
     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1),
     Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5),
@@ -30,8 +30,17 @@ iris_head_tibble <- structure(list(
         default = structure(list(), class = c("collector_guess", "collector"))),
         .Names = c("cols", "default"), class = "col_spec"))
 
-test_that("can read files", {
-    expect_equal(read.so('iris.txt'), iris_head)
-    expect_equal(read_so('iris.txt'), iris_head_tibble)
-    expect_equal(read_so('iris-tibble.txt'), iris_head_tibble)
+test_that("files can be read", {
+    expect_equal(read.so("iris.head.txt"), iris.head)
+    expect_equal(read_so("iris.head.txt"), iris_head)
+    expect_equal(read_so("iris_head.txt"), iris_head)
 })
+
+iris.lines <- readLines("iris.head.txt")
+iris_lines <- readLines("iris_head.txt")
+
+test_that("text input can be read", {
+    expect_equal(read.so(iris.lines), iris.head)
+    expect_equal(read_so(iris_lines), iris_head)
+})
+

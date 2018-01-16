@@ -26,6 +26,14 @@ sample_md <- structure(
         .Names = c("cols", "default"), class = "col_spec"))
 
 test_that("files can be read", {
-    expect_equal(read.md('sample.md'), sample.md)
-    expect_equal(read_md('sample.md'), sample_md)
+    expect_equal(read.md("sample.md"), sample.md)
+    expect_equal(read_md("sample.md"), sample_md)
+})
+
+sample_lines <- readLines("sample.md")
+
+test_that("text input can be read", {
+    expect_equal(read.md(sample_lines), sample.md)
+    expect_equal(read.md(paste(sample_lines, collapse = "\n")), sample.md)
+    expect_equal(read_md(sample_lines), sample_md)
 })

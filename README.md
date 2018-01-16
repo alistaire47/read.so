@@ -16,7 +16,7 @@ devtools::install_github("alistaire47/read.so")
 Read Tables from Stack Overflow Questions into R
 ------------------------------------------------
 
-Sometimes you see a really interesting question on Stack Overflow, but the asker only presents the data as a presentation-style table instead of as runnable R code. Fear no more! `read.so` will read even heinous tables into a data frame in a trice.
+Sometimes you see a really interesting question on Stack Overflow, but the asker only presents the data as a presentation-style table instead of as runnable R code. Fear no more! read.so will read even heinous tables into a data frame in a trice.
 
 ### Read data frame print output back into R
 
