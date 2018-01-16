@@ -1,4 +1,18 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+read.so
+=======
+
+[![Travis-CI Build Status](https://travis-ci.org/alistaire47/read.so.svg?branch=master)](https://travis-ci.org/alistaire47/read.so) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/alistaire47/read.so?branch=master&svg=true)](https://ci.appveyor.com/project/alistaire47/read.so) [![Coverage Status](https://img.shields.io/codecov/c/github/alistaire47/read.so/master.svg)](https://codecov.io/github/alistaire47/read.so?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/read.so)](https://cran.r-project.org/package=read.so)
+
+### Installation
+
+read.so is not on CRAN, but you can install it with
+
+``` r
+# install.packages("devtools")
+devtools::install_github("alistaire47/read.so")
+```
+
 Read Tables from Stack Overlow Questions into R
 -----------------------------------------------
 
@@ -57,7 +71,7 @@ read.so()
 Further, `read_so` will attempt to read in the results of printing a tibble:
 
 ``` r
-mtcars_lines <- capture.output(readr::read_csv(readr::readr_example('mtcars.csv')))
+mtcars_lines <- capture.output(readr::read_csv(readr::readr_example("mtcars.csv")))
 
 mtcars_lines
 #>  [1] "# A tibble: 32 x 11"                                                 
@@ -97,10 +111,10 @@ read.so can also read Markdown tables into R:
 
 ``` r
 chick_lines <- capture.output(
-    knitr::kable(head(ChickWeight), format = 'markdown')
+    knitr::kable(head(ChickWeight), format = "markdown")
 )
 
-cat(chick_lines, sep = '\n')
+cat(chick_lines, sep = "\n")
 #> 
 #> 
 #> | weight| Time|Chick |Diet |

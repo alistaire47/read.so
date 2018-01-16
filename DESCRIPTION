@@ -8,7 +8,8 @@ Description: Sometimes you see a really interesting question on Stack Overlow,
     heinous tables into a data frame in a trice.
 Depends: R (>= 3.4.3)
 Imports: readr, clipr
-Suggests: testthat
+Suggests: testthat,
+    covr
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true

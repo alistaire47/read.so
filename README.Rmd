@@ -14,6 +14,23 @@ knitr::opts_chunk$set(
 )
 ```
 
+# read.so
+
+[![Travis-CI Build Status](https://travis-ci.org/alistaire47/read.so.svg?branch=master)](https://travis-ci.org/alistaire47/read.so)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/alistaire47/read.so?branch=master&svg=true)](https://ci.appveyor.com/project/alistaire47/read.so)
+[![Coverage Status](https://img.shields.io/codecov/c/github/alistaire47/read.so/master.svg)](https://codecov.io/github/alistaire47/read.so?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/read.so)](https://cran.r-project.org/package=read.so)
+
+### Installation
+
+read.so is not on CRAN, but you can install it with
+
+```{r install, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("alistaire47/read.so")
+```
+
+
 ## Read Tables from Stack Overlow Questions into R
 
 Sometimes you see a really interesting question on Stack Overlow, but the asker 
@@ -48,7 +65,7 @@ read.so()
 Further, `read_so` will attempt to read in the results of printing a tibble:
 
 ```{r read_so, message=FALSE}
-mtcars_lines <- capture.output(readr::read_csv(readr::readr_example('mtcars.csv')))
+mtcars_lines <- capture.output(readr::read_csv(readr::readr_example("mtcars.csv")))
 
 mtcars_lines
 
@@ -61,10 +78,10 @@ read.so can also read Markdown tables into R:
 
 ```{r read.md}
 chick_lines <- capture.output(
-    knitr::kable(head(ChickWeight), format = 'markdown')
+    knitr::kable(head(ChickWeight), format = "markdown")
 )
 
-cat(chick_lines, sep = '\n')
+cat(chick_lines, sep = "\n")
 
 read.md(chick_lines)
 
