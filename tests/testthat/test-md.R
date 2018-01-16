@@ -1,6 +1,6 @@
-context("test_markdown")
+context("test_md")
 
-sample.markdown <- structure(
+sample.md <- structure(
     list(char = c("a", "a", "b", "c"),
          int = c(1L, 2L, 3L, 47L),
          dbl = c(0.1, 0.23, 456, 7.8),
@@ -8,7 +8,7 @@ sample.markdown <- structure(
     .Names = c("char", "int", "dbl", "date"), class = "data.frame",
     row.names = c(NA, -4L))
 
-sample_markdown <- structure(
+sample_md <- structure(
     list(char = c("a", "a", "b", "c"),
          int = c(1, 2, 3, 47),
          dbl = c(0.1, 0.23, 456, 7.8),
@@ -26,6 +26,6 @@ sample_markdown <- structure(
         .Names = c("cols", "default"), class = "col_spec"))
 
 test_that("files can be read", {
-    expect_equal(read.markdown('sample.md'), sample.markdown)
-    expect_equal(read_markdown('sample.md'), sample_markdown)
+    expect_equal(read.md('sample.md'), sample.md)
+    expect_equal(read_md('sample.md'), sample_md)
 })

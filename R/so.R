@@ -53,9 +53,9 @@ read_so <- function(file = clipr::read_clip(), row_names = TRUE, ...){
     if (length(file) == 1) {
         file <- readr::read_lines(file)
     }
-    file <- file[!grepl('(^\\*?\\s*(<\\w+>\\s*)+$)|(^#)', file)]
+    file <- file[!grepl('(^\\s*\\*?\\s*(<\\w+>\\s*)+$)|(^\\s*#)', file)]
     if (row_names) {
-        file[-1] <- gsub('^\\s?\\S+\\s', '', file[-1])
+        file[-1] <- gsub('^\\s*\\S+\\s+', '', file[-1])
     }
     file <- paste0(paste(trimws(file), collapse = '\n'), '\n')
     readr::read_table2(file, ...)

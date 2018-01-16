@@ -1,0 +1,75 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+## Read Tables from Stack Overlow Questions into R
+
+Sometimes you see a really interesting question on Stack Overlow, but the asker 
+only presents the data as a presentation-style table instead of as runnable R 
+code. Fear no more! `read.so` will read even the most heinous tables into a 
+data frame in a trice.
+
+### Read data frame print output back into R
+
+For instance, should you want to return output copied from the R console back 
+into your own session, use `read.so` for a data.frame, and `read_so` for a 
+tibble. Pass in a filepath, a raw string of text, a vector of lines, or if the 
+data is on the clipboard, nothing at all, and the functions will grab it for 
+you:
+
+```{r read.so}
+library(read.so)
+
+iris_lines <- capture.output(head(iris))
+
+iris_lines
+
+read.so(iris_lines)
+
+read_so(iris_lines)
+
+clipr::write_clip(head(iris))
+
+read.so()
+```
+
+Further, `read_so` will attempt to read in the results of printing a tibble:
+
+```{r read_so, message=FALSE}
+mtcars_lines <- capture.output(readr::read_csv(readr::readr_example('mtcars.csv')))
+
+mtcars_lines
+
+read_so(mtcars_lines)
+```
+
+### Read Markdown tables into R
+
+read.so can also read Markdown tables into R:
+
+```{r read.md}
+chick_lines <- capture.output(
+    knitr::kable(head(ChickWeight), format = 'markdown')
+)
+
+cat(chick_lines, sep = '\n')
+
+read.md(chick_lines)
+
+read_md(chick_lines)
+```
+
+It can handle a number of formats, including tables with delimiter rows 
+composed of "-", "=", "+", and whitespace.
