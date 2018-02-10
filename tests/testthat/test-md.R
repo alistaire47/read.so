@@ -4,7 +4,7 @@ sample_md <- tibble::tibble(
     char = c("a", "a", "b", "c"),
     int = c(1, 2, 3, 47),
     dbl = c(0.1, 0.23, 456, 7.8),
-    date = as.Date(c("1970-01-01", "0001-12-31", "2000-01-01", "2017-01-15"))
+    date = as.Date(c("1970-01-01", "1901-12-31", "2000-01-01", "2017-01-15"))
 )
 
 sample.md <- as.data.frame(sample_md)
