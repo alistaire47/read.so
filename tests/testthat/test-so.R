@@ -1,46 +1,27 @@
-context("so")
+context("read.so, read_so")
 
-iris.head <- structure(list(
-    Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4, 4.6, 5, 4.4, 4.9),
-    Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1),
-    Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5),
-    Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1),
-    Species = c("setosa", "setosa", "setosa", "setosa", "setosa", "setosa",
-                "setosa", "setosa", "setosa", "setosa")),
-    .Names = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species"),
-    class = "data.frame",
-    row.names = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"))
+data("iris")
+iris$Species <- as.character(iris$Species)
 
-iris_head <- structure(list(
-    Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4, 4.6, 5, 4.4, 4.9),
-    Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1),
-    Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7, 1.4, 1.5, 1.4, 1.5),
-    Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1),
-    Species = c("setosa", "setosa", "setosa", "setosa", "setosa", "setosa",
-                "setosa", "setosa", "setosa", "setosa")),
-    .Names = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species"),
-    row.names = c(NA, -10L), class = c("tbl_df", "tbl", "data.frame"),
-    spec = structure(list(cols = structure(list(
-        Sepal.Length = structure(list(), class = c("collector_double", "collector")),
-        Sepal.Width = structure(list(), class = c("collector_double", "collector")),
-        Petal.Length = structure(list(), class = c("collector_double", "collector")),
-        Petal.Width = structure(list(), class = c("collector_double", "collector")),
-        Species = structure(list(), class = c("collector_character", "collector"))),
-        .Names = c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species")),
-        default = structure(list(), class = c("collector_guess", "collector"))),
-        .Names = c("cols", "default"), class = "col_spec"))
+iris.head <- head(iris, 10)
+iris_head <- head(tibble::as_tibble(iris), 10)
+
+capture.output(iris.head, file = 'iris.head.txt')
+capture.output(iris_head, file = 'iris_head.txt')
 
 test_that("files can be read", {
-    expect_equal(read.so("iris.head.txt"), iris.head)
-    expect_equal(read_so("iris.head.txt"), iris_head)
-    expect_equal(read_so("iris_head.txt"), iris_head)
+    expect_equivalent(read.so("iris.head.txt"), iris.head)
+    expect_equivalent(read_so("iris.head.txt"), iris_head)
+    expect_equivalent(read_so("iris_head.txt"), iris_head)
 })
 
 iris.lines <- readLines("iris.head.txt")
 iris_lines <- readLines("iris_head.txt")
 
 test_that("text input can be read", {
-    expect_equal(read.so(iris.lines), iris.head)
-    expect_equal(read_so(iris_lines), iris_head)
+    expect_equivalent(read.so(iris.lines), iris.head)
+    expect_equivalent(read_so(iris_lines), iris_head)
 })
 
+unlink('iris.head.txt')
+unlink('iris_head.txt')

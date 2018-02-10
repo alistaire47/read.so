@@ -1,7 +1,6 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+tags: [r]
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -30,6 +29,7 @@ read.so is not on CRAN, but you can install it with
 devtools::install_github("alistaire47/read.so")
 ```
 
+---
 
 ## Read Tables from Stack Overflow Questions into R
 
@@ -38,7 +38,7 @@ only presents the data as a presentation-style table instead of as runnable R
 code. Fear no more! read.so will read even heinous tables into a data frame 
 in a trice.
 
-### Read data frame print output back into R
+### Read data frame print output back a data frame
 
 For instance, should you want to return output copied from the R console back 
 into your own session, use `read.so` for a data.frame, and `read_so` for a 
@@ -65,16 +65,17 @@ read.so()
 Further, `read_so` will attempt to read in the results of printing a tibble:
 
 ```{r read_so, message=FALSE}
-mtcars_lines <- capture.output(readr::read_csv(readr::readr_example("mtcars.csv")))
+mtcars_lines <- capture.output(tibble::as_tibble(mtcars))
 
 mtcars_lines
 
 read_so(mtcars_lines)
 ```
 
-### Read Markdown tables into R
+### Read Markdown tables into data frames
 
-read.so can also read Markdown tables into R:
+When you need to read Markdown tables into R, read.so has you covered 
+with `read.md` and `read_md`:
 
 ```{r read.md}
 chick_lines <- capture.output(
@@ -88,5 +89,37 @@ read.md(chick_lines)
 read_md(chick_lines)
 ```
 
-It can handle a number of formats, including tables with delimiter rows 
+They can handle a number of formats, including tables with delimiter rows 
 composed of "-", "=", "+", and whitespace.
+
+
+### Read `str` results back into a data frame
+
+If all you have is the results of calling `str` on a data frame, `read.str` 
+will read as many complete rows as possible into a new data frame of the same 
+class as the original:
+
+```{r}
+warp_lines <- capture.output(str(warpbreaks))
+
+warp_lines
+
+read.str(warp_lines)
+```
+
+### Read `tibble::glimpse` results back into a data frame
+
+Similarly, if the data was printed by `tibble::glimpse`, try `read.glimpse` 
+or `read_glimpse`:
+
+```{r}
+states <- data.frame(state.name, state.abb, state.region, state.division, 
+                     state.area, center = state.center, state.x77)
+
+states_lines <- capture.output(tibble::glimpse(states))
+
+states_lines
+
+read_glimpse(states_lines)
+```
+
