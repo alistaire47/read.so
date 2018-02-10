@@ -16,9 +16,10 @@ knitr::opts_chunk$set(
 # read.so
 
 [![Travis-CI Build Status](https://travis-ci.org/alistaire47/read.so.svg?branch=master)](https://travis-ci.org/alistaire47/read.so)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/alistaire47/read.so?branch=master&svg=true)](https://ci.appveyor.com/project/alistaire47/read.so)
+[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/17mg5b1yd926krpk?svg=true)](https://ci.appveyor.com/project/alistaire47/read-so)
 [![Coverage Status](https://img.shields.io/codecov/c/github/alistaire47/read.so/master.svg)](https://codecov.io/github/alistaire47/read.so?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/read.so)](https://cran.r-project.org/package=read.so)
+
 
 ### Installation
 
