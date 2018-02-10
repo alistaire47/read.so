@@ -7,6 +7,9 @@ options(width = 80)
 capture.output(str(iris), file = "iris.str.txt")
 capture.output(tibble::glimpse(iris, width = 80), file = "iris_glimpse.txt")
 
+sample <- tibble::tibble(x = list(47))
+
+
 
 test_that("str file input can be read", {
     expect_equivalent(read.str('iris.str.txt'), head(iris, 10))
@@ -18,6 +21,8 @@ test_that("str text input can be read", {
                       head(tibble::as_tibble(iris), 10))
     expect_equivalent(read.str(capture.output(str(ChickWeight))),
                       ChickWeight[NULL, ])
+    expect_equivalent(read.str(capture.output(str(sample))),
+                      tibble::tibble(x = c('of', '1')))    # worth improving?
 })
 
 test_that("glimpse file input can be read", {
@@ -31,6 +36,8 @@ test_that("glimpse text input can be read", {
         read_glimpse(capture.output(tibble::glimpse(Orange, width = 80))),
         head(tibble::as_tibble(Orange), 9)
     )
+    expect_equivalent(read_glimpse(capture.output(tibble::glimpse(sample))),
+                      tibble::tibble(x = '[47]'))
 })
 
 unlink("iris.str.txt")
