@@ -20,12 +20,14 @@
 #'     data (either a single string or a vector of lines). If unspecified,
 #'     reads from the clipboard.
 #' @param header Logical. Does the data include a header row?
+#' @param na.strings,na Character. Values to convert to `NA`.
 #' @param stringsAsFactors Logical. Indicates whether to convert string columns
 #'     to factors. Passed along to [read.table()].
 #' @param row_names Logical. Indicates whether the input contains a column of
-#'     row names. Row names are removed by `read_so`; to keep them,
-#'     use `read.so`. For row names with spaces, try [readr::read_table()] or
-#'     [readr::read_fwf()].
+#'     row names. If missing, guesses based on the number of elements in the
+#'     header and first row. Row names are removed by `read_so`; to keep them,
+#'     use `read.so`. For row names with spaces, try [readr::read_table()]
+#'     or [readr::read_fwf()].
 #' @param ... Passed along to [read.table()] or [readr::read_table2()] by
 #'     `read.so` and `read_so`, respectively. Applied after tibble formatting
 #'     lines have been removed.
@@ -56,16 +58,23 @@
 #'
 #' @export
 read.so <- function(file = clipr::read_clip(),
-                    header = TRUE, stringsAsFactors = FALSE, ...){
+                    header = TRUE,
+                    na.strings = c("NA", "<NA>"),
+                    stringsAsFactors = FALSE,
+                    ...){
     if (length(file) > 1) {
         file <- paste(file, collapse = '\n')
     }
 
     if (grepl('\n', file)) {
-        result <- utils::read.table(text = file, header = header,
+        result <- utils::read.table(text = file,
+                                    header = header,
+                                    na.strings = na.strings,
                                     stringsAsFactors = stringsAsFactors, ...)
     } else {
-        result <- utils::read.table(file, header = header,
+        result <- utils::read.table(file,
+                                    header = header,
+                                    na.strings = na.strings,
                                     stringsAsFactors = stringsAsFactors, ...)
     }
     rownames(result) <- utils::type.convert(rownames(result), as.is = TRUE)
@@ -74,14 +83,20 @@ read.so <- function(file = clipr::read_clip(),
 
 #' @rdname read.so
 #' @export
-read_so <- function(file = clipr::read_clip(), row_names = TRUE, ...){
+read_so <- function(file = clipr::read_clip(), row_names,
+                    na = c("NA", "<NA>"), ...){
     if (length(file) == 1) {
-        file <- readr::read_lines(file)
+        lines <- readr::read_lines(file)
+    } else {
+        lines <- file
     }
-    file <- file[!grepl('(^\\s*\\*?\\s*(<\\w+>\\s*)+$)|(^\\s*#)', file)]
+    lines <- lines[!grepl('(^\\s*\\*?\\s*(<\\w+>\\s*)+$)|(^\\s*#)', lines)]
+    if (missing(row_names)) {
+        row_names <- do.call(`!=`, lapply(gregexpr("\\S+", lines[1:2]), length))
+    }
     if (row_names) {
-        file[-1] <- gsub('^\\s*\\S+\\s+', '', file[-1])
+        lines[-1] <- gsub('^\\s*\\S+\\s+', '', lines[-1])
     }
-    file <- paste0(paste(trimws(file), collapse = '\n'), '\n')
-    readr::read_table2(file, ...)
+    file_text <- paste0(paste(trimws(lines), collapse = '\n'), '\n')
+    readr::read_table2(file_text, na = na, ...)
 }

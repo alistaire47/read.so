@@ -5,10 +5,10 @@
 \alias{read_so}
 \title{Read data pasted from R printing into a data frame}
 \usage{
-read.so(file = clipr::read_clip(), header = TRUE,
-  stringsAsFactors = FALSE, ...)
+read.so(file = clipr::read_clip(), header = TRUE, na.strings = c("NA",
+  "<NA>"), stringsAsFactors = FALSE, ...)
 
-read_so(file = clipr::read_clip(), row_names = TRUE, ...)
+read_so(file = clipr::read_clip(), row_names, na = c("NA", "<NA>"), ...)
 }
 \arguments{
 \item{file}{Character. A path to a file, a connection, or literal
@@ -16,6 +16,8 @@ data (either a single string or a vector of lines). If unspecified,
 reads from the clipboard.}
 
 \item{header}{Logical. Does the data include a header row?}
+
+\item{na.strings, na}{Character. Values to convert to \code{NA}.}
 
 \item{stringsAsFactors}{Logical. Indicates whether to convert string columns
 to factors. Passed along to \code{\link[=read.table]{read.table()}}.}
@@ -25,9 +27,10 @@ to factors. Passed along to \code{\link[=read.table]{read.table()}}.}
 lines have been removed.}
 
 \item{row_names}{Logical. Indicates whether the input contains a column of
-row names. Row names are removed by \code{read_so}; to keep them,
-use \code{read.so}. For row names with spaces, try \code{\link[readr:read_table]{readr::read_table()}} or
-\code{\link[readr:read_fwf]{readr::read_fwf()}}.}
+row names. If missing, guesses based on the number of elements in the
+header and first row. Row names are removed by \code{read_so}; to keep them,
+use \code{read.so}. For row names with spaces, try \code{\link[readr:read_table]{readr::read_table()}}
+or \code{\link[readr:read_fwf]{readr::read_fwf()}}.}
 }
 \value{
 For \code{read.so} a data.frame; for \code{read_so}, a tibble.

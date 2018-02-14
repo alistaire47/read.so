@@ -60,6 +60,9 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -88,10 +91,10 @@
 data.frame or tibble, respectively.</p>
     
 
-    <pre class="usage"><span class='fu'>read.so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>read.so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>na.strings</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"NA"</span>,
+  <span class='st'>"&lt;NA&gt;"</span>), <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='fu'>read_so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>row_names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>read_so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='no'>row_names</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"NA"</span>, <span class='st'>"&lt;NA&gt;"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -107,6 +110,10 @@ reads from the clipboard.</p></td>
       <td><p>Logical. Does the data include a header row?</p></td>
     </tr>
     <tr>
+      <th>na.strings, na</th>
+      <td><p>Character. Values to convert to <code>NA</code>.</p></td>
+    </tr>
+    <tr>
       <th>stringsAsFactors</th>
       <td><p>Logical. Indicates whether to convert string columns
 to factors. Passed along to <code>read.table()</code>.</p></td>
@@ -120,9 +127,10 @@ lines have been removed.</p></td>
     <tr>
       <th>row_names</th>
       <td><p>Logical. Indicates whether the input contains a column of
-row names. Row names are removed by <code>read_so</code>; to keep them,
-use <code>read.so</code>. For row names with spaces, try <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_table'>readr::read_table()</a></code> or
-<code><a href='http://www.rdocumentation.org/packages/readr/topics/read_fwf'>readr::read_fwf()</a></code>.</p></td>
+row names. If missing, guesses based on the number of elements in the
+header and first row. Row names are removed by <code>read_so</code>; to keep them,
+use <code>read.so</code>. For row names with spaces, try <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_table'>readr::read_table()</a></code>
+or <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_fwf'>readr::read_fwf()</a></code>.</p></td>
     </tr>
     </table>
     
