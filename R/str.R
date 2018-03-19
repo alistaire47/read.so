@@ -46,7 +46,7 @@ parsers <- tibble::tribble(
 #' @export
 read.str <- function(file = clipr::read_clip()){
     if (length(file) == 1) {
-        lns <- readLines(file)
+        lns <- readr::read_lines(file)
     } else {
         lns <- file
     }

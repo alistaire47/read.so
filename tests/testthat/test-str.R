@@ -19,6 +19,8 @@ test_that("str file input can be read", {
 test_that("str text input can be read", {
     expect_equivalent(read.str(capture.output(str(tibble::as_tibble(iris)))),
                       head(tibble::as_tibble(iris), 10))
+    expect_equivalent(read.str(paste(capture.output(str(iris)), collapse = "\n")),
+                      head(iris, 10))
     expect_equivalent(read.str(capture.output(str(ChickWeight))),
                       ChickWeight[NULL, ])
     expect_equivalent(read.str(capture.output(str(sample))),

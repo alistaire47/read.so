@@ -1,6 +1,6 @@
 Package: read.so
 Title: Read Tables from Stack Overflow Questions into R
-Version: 0.0.1
+Version: 0.0.1.9000
 Authors@R: person("Edward", "Visel", email = "edward.visel@gmail.com", role = c("aut", "cre"))
 Description: Sometimes you see a really interesting question on Stack Overflow, 
     but the asker only presents the data as a presentation-style table instead 

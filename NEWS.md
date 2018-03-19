@@ -1,3 +1,7 @@
+# read.so 0.0.1.9000
+
+* `read.str` and `read_str` now read single-string input properly.
+
 # read.so 0.0.1
 
 * Changed default of `read_so`'s `row_names` parameter to guess based on header 
