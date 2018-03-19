@@ -37,14 +37,13 @@ parsers <- tibble::tribble(
 #' @return A data frame of the class specified in the first line of input.
 #'
 #' @examples
-#' x <- capture.output(str(iris))
+#' read.str(capture.output(str(iris)))
 #'
-#' read.str(x)
-#'
-#' read_str(x)
+#' # Resulting class is determined by input, not read.str vs. read_str
+#' read_str(capture.output(str(tibble::as_tibble(iris))))
 #'
 #' @export
-read.str <- function(file = clipr::read_clip()){
+read.str <- function(file = readr::clipboard()){
     if (length(file) == 1) {
         lns <- readr::read_lines(file)
     } else {
@@ -142,7 +141,6 @@ read_str <- read.str
 #' @return A data frame of the class specified by the `class` parameter.
 #'
 #' @examples
-#'
 #' x <- capture.output(tibble::glimpse(iris))
 #'
 #' read_glimpse(x)
@@ -150,7 +148,7 @@ read_str <- read.str
 #' read.glimpse(x)
 #'
 #' @export
-read_glimpse <- function(file = clipr::read_clip(),
+read_glimpse <- function(file = readr::clipboard(),
                          class = c("tbl_df", "tbl", "data.frame")){
     if (length(file) == 1) {
         lns <- readr::read_lines(file)
@@ -191,7 +189,7 @@ read_glimpse <- function(file = clipr::read_clip(),
 
 #' @rdname read_glimpse
 #' @export
-read.glimpse <- function(file = clipr::read_clip(),
+read.glimpse <- function(file = readr::clipboard(),
                          class = "data.frame"){
     read_glimpse(file = file, class = class)
 }

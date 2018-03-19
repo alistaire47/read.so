@@ -5,10 +5,10 @@
 \alias{read.glimpse}
 \title{Read the results of \code{tibble::glimpse} back into a data frame}
 \usage{
-read_glimpse(file = clipr::read_clip(), class = c("tbl_df", "tbl",
+read_glimpse(file = readr::clipboard(), class = c("tbl_df", "tbl",
   "data.frame"))
 
-read.glimpse(file = clipr::read_clip(), class = "data.frame")
+read.glimpse(file = readr::clipboard(), class = "data.frame")
 }
 \arguments{
 \item{file}{Character. A path to a file, a connection, or literal
@@ -41,7 +41,6 @@ behavior, and
 }
 }
 \examples{
-
 x <- capture.output(tibble::glimpse(iris))
 
 read_glimpse(x)

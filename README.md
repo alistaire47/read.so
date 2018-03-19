@@ -231,10 +231,10 @@ read_glimpse(states_lines)
 #> # A tibble: 4 x 15
 #>   state.name state.abb state.region state.division     state.area center.x
 #> * <fct>      <fct>     <fct>        <fct>                   <dbl>    <dbl>
-#> 1 Alabama    AL        South        East South Central     51609.   - 86.8
+#> 1 Alabama    AL        South        East South Central     51609.    -86.8
 #> 2 Alaska     AK        West         Pacific               589757.   -127. 
 #> 3 Arizona    AZ        West         Mountain              113909.   -112. 
-#> 4 Arkansas   AR        South        West Sou...            53104.   - 92.3
+#> 4 Arkansas   AR        South        West Sou...            53104.    -92.3
 #> # ... with 9 more variables: center.y <dbl>, Population <dbl>,
 #> #   Income <dbl>, Illiteracy <dbl>, Life.Exp <dbl>, Murder <dbl>,
 #> #   HS.Grad <dbl>, Frost <dbl>, Area <dbl>

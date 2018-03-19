@@ -5,9 +5,9 @@
 \alias{read_str}
 \title{Read the results of \code{str.data.frame} back into a data frame}
 \usage{
-read.str(file = clipr::read_clip())
+read.str(file = readr::clipboard())
 
-read_str(file = clipr::read_clip())
+read_str(file = readr::clipboard())
 }
 \arguments{
 \item{file}{Character. A path to a file, a connection, or literal
@@ -35,10 +35,9 @@ Classes at the top of the \code{str} results are reassigned, so both vanilla
 Because class is determined by the data, \code{read_str} is merely an alias.
 }
 \examples{
-x <- capture.output(str(iris))
+read.str(capture.output(str(iris)))
 
-read.str(x)
-
-read_str(x)
+# Resulting class is determined by input, not read.str vs. read_str
+read_str(capture.output(str(tibble::as_tibble(iris))))
 
 }

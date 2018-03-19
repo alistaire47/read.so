@@ -2,6 +2,12 @@
 
 * `read.str` and `read_str` now read single-string input properly.
 
+* Inputs use `readr::clipboard` instead of `clipr::read_clip` so clipr can be 
+  moved to Suggests. Since the former is an alias (and therefore clipr is a 
+  dependency of readr), behavior will not change, but the dependency graph is 
+  slightly simpler. The same could but for the sake of linking and simplicity 
+  will not be done with tibble.
+
 # read.so 0.0.1
 
 * Changed default of `read_so`'s `row_names` parameter to guess based on header 

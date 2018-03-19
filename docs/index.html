@@ -8,8 +8,14 @@
 <title>Read Tables from Stack Overflow Questions into R • read.so</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Read Tables from Stack Overflow Questions into R">
+<meta property="og:description" content="Sometimes you see a really interesting question on Stack Overflow, 
+    but the asker only presents the data as a presentation-style table instead 
+    of as runnable R code. Fear no more! read.so will read even heinous tables 
+    into a data frame in a trice.">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -260,10 +266,10 @@
 <a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; # A tibble: 4 x 15</span></a>
 <a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;   state.name state.abb state.region state.division     state.area center.x</span></a>
 <a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt; * &lt;fct&gt;      &lt;fct&gt;     &lt;fct&gt;        &lt;fct&gt;                   &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; 1 Alabama    AL        South        East South Central     51609.   - 86.8</span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt; 1 Alabama    AL        South        East South Central     51609.    -86.8</span></a>
 <a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; 2 Alaska     AK        West         Pacific               589757.   -127. </span></a>
 <a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; 3 Arizona    AZ        West         Mountain              113909.   -112. </span></a>
-<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; 4 Arkansas   AR        South        West Sou...            53104.   - 92.3</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; 4 Arkansas   AR        South        West Sou...            53104.    -92.3</span></a>
 <a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co">#&gt; # ... with 9 more variables: center.y &lt;dbl&gt;, Population &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb6-34" data-line-number="34"><span class="co">#&gt; #   Income &lt;dbl&gt;, Illiteracy &lt;dbl&gt;, Life.Exp &lt;dbl&gt;, Murder &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt; #   HS.Grad &lt;dbl&gt;, Frost &lt;dbl&gt;, Area &lt;dbl&gt;</span></a></code></pre></div>
@@ -286,7 +292,7 @@
 <p><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a> + file <a href="LICENSE.html">LICENSE</a></p>
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Edward Visel <br><small class="roles"> Author, maintainer </small> </li>
+<li>Edward Visel <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">

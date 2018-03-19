@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read the results of <code><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>tibble::glimpse</a></code> back into a data frame — read_glimpse • read.so</title>
+<title>Read the results of <code>tibble::glimpse</code> back into a data frame — read_glimpse • read.so</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,11 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Read the results of <code>tibble::glimpse</code> back into a data frame — read_glimpse" />
+
+<meta property="og:description" content="read_glimpse and read.glimpse read the data printed
+by tibble::glimpse() back into a data frame." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -83,7 +90,7 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read the results of <code><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>tibble::glimpse</a></code> back into a data frame</h1>
+    <h1>Read the results of <code>tibble::glimpse</code> back into a data frame</h1>
     </div>
 
     
@@ -91,10 +98,10 @@
 by <code><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>tibble::glimpse()</a></code> back into a data frame.</p>
     
 
-    <pre class="usage"><span class='fu'>read_glimpse</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"tbl_df"</span>, <span class='st'>"tbl"</span>,
+    <pre class="usage"><span class='fu'>read_glimpse</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/clipboard'>clipboard</a></span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"tbl_df"</span>, <span class='st'>"tbl"</span>,
   <span class='st'>"data.frame"</span>))
 
-<span class='fu'>read.glimpse</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)</pre>
+<span class='fu'>read.glimpse</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/clipboard'>clipboard</a></span>(), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -132,8 +139,7 @@ behavior, and</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>capture.output</span>(<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>iris</span>))
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>capture.output</span>(<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/glimpse'>glimpse</a></span>(<span class='no'>iris</span>))
 
 <span class='fu'>read_glimpse</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 5
 #&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species

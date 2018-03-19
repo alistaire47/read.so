@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="All news" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -89,6 +92,13 @@
 
     <div class="contents">
     <div class="section level1">
+<h1>read.so 0.0.1.9000</h1>
+<ul>
+<li><p><code>read.str</code> and <code>read_str</code> now read single-string input properly.</p></li>
+<li><p>Inputs use <code><a href="http://www.rdocumentation.org/packages/readr/topics/clipboard">readr::clipboard</a></code> instead of <code><a href="http://www.rdocumentation.org/packages/clipr/topics/read_clip">clipr::read_clip</a></code> so clipr can be moved to Suggests. Since the former is an alias (and therefore clipr is a dependency of readr), behavior will not change, but the dependency graph is slightly simpler. The same could but for the sake of linking and simplicity will not be done with tibble.</p></li>
+</ul>
+</div>
+    <div class="section level1">
 <h1>read.so 0.0.1</h1>
 <ul>
 <li><p>Changed default of <code>read_so</code>’s <code>row_names</code> parameter to guess based on header and first row.</p></li>
@@ -111,6 +121,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#NA">0.0.1.9000</a></li>
         <li><a href="#NA">0.0.1</a></li>
         <li><a href="#NA">0.0.0.9000</a></li>
       </ul>
