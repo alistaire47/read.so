@@ -18,8 +18,10 @@
 #' write.so(head(iris))
 #'
 #' @export
-write.so <- function(x, file = stdout(), write_clip = TRUE,
-                     indent = 4, tbl_fun = c("data_frame", "tibble")){
+write.so <- function(x, file = stdout(),
+                     write_clip = getOption("read.so.write_clip", TRUE),
+                     indent = getOption("read.so.indent", 4),
+                     tbl_fun = c("data_frame", "tibble")){
     tbl_fun <- match.arg(tbl_fun)
 
     dput_string <- paste(utils::capture.output(dput(x)), collapse = " ")

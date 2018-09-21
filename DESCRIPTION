@@ -9,8 +9,15 @@ Description: Sometimes you see a really interesting question on Stack Overflow,
 URL: https://github.com/alistaire47/read.so
 BugReports: https://github.com/alistaire47/read.so/issues
 Depends: R (>= 3.4.0)
-Imports: clipr, readr (>= 1.2.0), tibble
-Suggests: covr, knitr, testthat
+Imports: 
+    clipr, 
+    readr (>= 1.2.0), 
+    tibble
+Suggests: 
+    covr, 
+    data.table, 
+    knitr, 
+    testthat
 Remotes: tidyverse/readr
 License: GPL-3 + file LICENSE
 Encoding: UTF-8

@@ -5,11 +5,15 @@
 \alias{write_so}
 \title{Write a text representation of a data frame}
 \usage{
-write.so(x, file = stdout(), write_clip = TRUE, indent = 4,
-  tbl_fun = c("data_frame", "tibble"))
+write.so(x, file = stdout(),
+  write_clip = getOption("read.so.write_clip", TRUE),
+  indent = getOption("read.so.indent", 4), tbl_fun = c("data_frame",
+  "tibble"))
 
-write_so(x, file = stdout(), write_clip = TRUE, indent = 4,
-  tbl_fun = c("data_frame", "tibble"))
+write_so(x, file = stdout(),
+  write_clip = getOption("read.so.write_clip", TRUE),
+  indent = getOption("read.so.indent", 4), tbl_fun = c("data_frame",
+  "tibble"))
 }
 \arguments{
 \item{x}{A data frame to write.}
