@@ -156,8 +156,8 @@ read_glimpse <- function(file = readr::clipboard(),
         lns <- file
     }
 
-    lns <- lns[grep('\\s*\\$', lns)]
-    lns <- gsub('^\\s*\\$\\s*|,\\s*\\S*\\.+\\s*$', '', lns)
+    lns <- lns[grep('\\s*\\$', lns)]    # subset to variable lines
+    lns <- gsub('^\\s*\\$\\s*|,\\s*\\S*[.\u2026]*\\s*$', '', lns)    # remove start/end cruft
     nms <- sub('\\s*<.*$', '', lns)
     cls <- sub('.*<(\\w+)>.*', '\\1', lns)
     lns <- sub('.*>\\s*', '', lns)

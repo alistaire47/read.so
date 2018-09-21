@@ -28,15 +28,15 @@ test_that("str text input can be read", {
 })
 
 test_that("glimpse file input can be read", {
-    expect_equivalent(read.glimpse('iris_glimpse.txt'), head(iris, 6))
+    expect_equivalent(read.glimpse('iris_glimpse.txt'), head(iris, 7))
     expect_equivalent(read_glimpse('iris_glimpse.txt'),
-                      head(tibble::as_tibble(iris), 6))
+                      head(tibble::as_tibble(iris), 7))
 })
 
 test_that("glimpse text input can be read", {
     expect_equivalent(
         read_glimpse(capture.output(tibble::glimpse(Orange, width = 80))),
-        head(tibble::as_tibble(Orange), 9)
+        head(tibble::as_tibble(Orange), 10)
     )
     expect_equivalent(read_glimpse(capture.output(tibble::glimpse(sample))),
                       tibble::tibble(x = '[47]'))
