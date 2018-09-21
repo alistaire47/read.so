@@ -5,10 +5,11 @@
 \alias{read_so}
 \title{Read data pasted from R printing into a data frame}
 \usage{
-read.so(file = readr::clipboard(), header = TRUE, na.strings = c("NA",
-  "<NA>"), stringsAsFactors = FALSE, ...)
+read.so(file = readr::clipboard(), header = TRUE,
+  na.strings = c("NA", "<NA>"), stringsAsFactors = FALSE, ...)
 
-read_so(file = readr::clipboard(), row_names, na = c("NA", "<NA>"), ...)
+read_so(file = readr::clipboard(), row_names, na = c("NA", "<NA>"),
+  ...)
 }
 \arguments{
 \item{file}{Character. A path to a file, a connection, or literal

@@ -5,8 +5,8 @@
 \alias{read_md}
 \title{Read a markdown table into a data frame}
 \usage{
-read.md(file = readr::clipboard(), delim = "|", stringsAsFactors = FALSE,
-  strip.white = TRUE, ...)
+read.md(file = readr::clipboard(), delim = "|",
+  stringsAsFactors = FALSE, strip.white = TRUE, ...)
 
 read_md(file = readr::clipboard(), delim = "|", trim_ws = TRUE, ...)
 }
