@@ -40,6 +40,6 @@ the output is determined by the class of the input.
 \code{write_so} is an alias; data frame class is determined by input class.
 }
 \examples{
-write.so(head(iris))
+write.so(head(iris), write_clip = FALSE)
 
 }

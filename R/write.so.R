@@ -17,7 +17,7 @@
 #'     returns the call invisibly.
 #'
 #' @examples
-#' write.so(head(iris))
+#' write.so(head(iris), write_clip = FALSE)
 #'
 #' @export
 write.so <- function(x, file = stdout(),
