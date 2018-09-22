@@ -5,15 +5,17 @@ data_frame <- tibble::data_frame
 data.table <- data.table::data.table
 
 test_that("expressions returned match original", {
-    expect_equal(eval(write.so(iris)), iris)
-    expect_equal(
-        eval(write_so(tibble::as_tibble(iris))),
-        tibble::as_tibble(iris)
-    )
-    expect_equal(
-        eval(write.so(data.table::as.data.table(iris))),
-        data.table::as.data.table(iris)
-    )
+    capture.output({    # stop printing
+        expect_equal(eval(write.so(iris)), iris)
+        expect_equal(
+            eval(write_so(tibble::as_tibble(iris))),
+            tibble::as_tibble(iris)
+        )
+        expect_equal(
+            eval(write.so(data.table::as.data.table(iris))),
+            data.table::as.data.table(iris)
+        )
+    })
 })
 
 test_that("running text output returns original", {

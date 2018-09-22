@@ -42,5 +42,17 @@ test_that("glimpse text input can be read", {
                       tibble::tibble(x = '[47]'))
 })
 
+quoted_df <- tibble::data_frame(x = rep('test", "test', 10))
+test_that("quoted strings are well-handled", {
+    expect_equivalent(
+        read_glimpse(capture.output(tibble::glimpse(quoted_df, width = 47))),
+        quoted_df[1:2, ]
+    )
+    expect_equivalent(
+        read_glimpse(capture.output(tibble::glimpse(quoted_df, width = 56))),
+        quoted_df[1:2, ]
+    )
+})
+
 unlink("iris.str.txt")
 unlink("iris_glimpse.txt")

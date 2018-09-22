@@ -43,7 +43,7 @@ parsers <- tibble::tribble(
 #' read_str(capture.output(str(tibble::as_tibble(iris))))
 #'
 #' @export
-read.str <- function(file = readr::clipboard()){
+read.str <- function(file = clipr::read_clip()){
     if (length(file) == 1) {
         lns <- readr::read_lines(file)
     } else {
@@ -148,7 +148,7 @@ read_str <- read.str
 #' read.glimpse(x)
 #'
 #' @export
-read_glimpse <- function(file = readr::clipboard(),
+read_glimpse <- function(file = clipr::read_clip(),
                          class = c("tbl_df", "tbl", "data.frame")){
     if (length(file) == 1) {
         lns <- readr::read_lines(file)
@@ -157,14 +157,26 @@ read_glimpse <- function(file = readr::clipboard(),
     }
 
     lns <- lns[grep('\\s*\\$', lns)]    # subset to variable lines
-    lns <- gsub('^\\s*\\$\\s*|,\\s*\\S*[.\u2026]*\\s*$', '', lns)    # remove start/end cruft
+    lns <- gsub('^\\s*\\$\\s|,[^,"]*?$|\u2026$', '', lns)    # remove start/end cruft
     nms <- sub('\\s*<.*$', '', lns)
     cls <- sub('.*<(\\w+)>.*', '\\1', lns)
     lns <- sub('.*>\\s*', '', lns)
 
-    dat <- lapply(lns, function(x){
-        # will fail with factors with commas in levels, because glimpse does
-        scan(text = x, what = character(), sep = ',', strip.white = TRUE, quiet = TRUE)
+    dat <- lapply(lns, function(ln){
+        # handle quoted strings/factors
+        if (startsWith(ln, '"')) {
+            res <- strsplit(ln, '", "')[[1]]
+            res[1] <- sub('^"', '', res[1])
+            if (grepl('[^\\]"$', res[length(res)])) {
+                res[length(res)] <- sub('"$', '', res[length(res)])
+            } else {
+                res <- res[-length(res)]    # drop incomplete
+            }
+            gsub("\\\\", "\\", res)
+        } else {
+            scan(text = ln, what = character(), sep = ",",
+                 strip.white = TRUE, quiet = TRUE)
+        }
     })
     dat <- lapply(dat, `[`, seq(min(lengths(dat))))    # subset to complete rows
 
@@ -189,7 +201,7 @@ read_glimpse <- function(file = readr::clipboard(),
 
 #' @rdname read_glimpse
 #' @export
-read.glimpse <- function(file = readr::clipboard(),
+read.glimpse <- function(file = clipr::read_clip(),
                          class = "data.frame"){
     read_glimpse(file = file, class = class)
 }

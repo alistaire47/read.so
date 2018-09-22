@@ -1,12 +1,15 @@
-# read.so 0.0.1.9000
+# read.so 0.1.0
+
+* Adds `write.so` and `write_so`, which output clean code and calls to 
+  reproduce a data frame.
+
+* `read_glimpse` handles the new behavior of `glimpse` with single character 
+  ellipses.
+
+* `read_glimpse` handles commas and quotes in quoted strings and factors 
+  properly.
 
 * `read.str` and `read_str` now read single-string input properly.
-
-* Inputs use `readr::clipboard` instead of `clipr::read_clip` so clipr can be 
-  moved to Suggests. Since the former is an alias (and therefore clipr is a 
-  dependency of readr), behavior will not change, but the dependency graph is 
-  slightly simpler. The same could but for the sake of linking and simplicity 
-  will not be done with tibble.
 
 # read.so 0.0.1
 

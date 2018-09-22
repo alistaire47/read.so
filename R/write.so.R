@@ -2,7 +2,9 @@
 #'
 #' `write.so` writes a call to produce the specified data frame to the console
 #' or a specified connection. The function used to recreate the data frame in
-#' the output is determined by the class of the input. `write_so` is an alias.
+#' the output is determined by the class of the input.
+#'
+#' `write_so` is an alias; data frame class is determined by input class.
 #'
 #' @param x A data frame to write.
 #' @param file A connection or filename to which to print; passed to [`cat`].

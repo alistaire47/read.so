@@ -23,23 +23,25 @@ knitr::opts_chunk$set(
 
 ### Installation
 
-read.so is not on CRAN, but you can install it with
+read.so is not on CRAN, but you can install it by running
 
 ```{r install, eval=FALSE}
-# install.packages("devtools")
+install.packages("devtools")
 devtools::install_github("alistaire47/read.so")
 ```
 
 ---
 
-## Read Tables from Stack Overflow Questions into R
+## Read data from Stack Overflow questions into R
 
-Sometimes you see a really interesting question on Stack Overflow, but the asker 
+Sometimes you see a really interesting question on Stack Overflow (or a Github 
+issue, or [RStudio Community](https://community.rstudio.com/)), but the asker 
 only presents the data as a presentation-style table instead of as runnable R 
-code. Fear no more! read.so will read even heinous tables into a data frame 
-in a trice.
+code, because they, unlike you, don't use 
+[reprex](http://reprex.tidyverse.org/). Fear no more! read.so will read even 
+heinous tables into data frames and code in a trice.
 
-### Read data frame print output back a data frame
+### Read data frame print output back into a data frame
 
 For instance, should you want to return output copied from the R console back 
 into your own session, use `read.so` for a data.frame, and `read_so` for a 
@@ -124,3 +126,29 @@ states_lines
 read_glimpse(states_lines)
 ```
 
+## Generate pretty code to reproduce a data frame
+
+The reading functions make it easy to get a question's data into R, but to 
+construct a reproducible response requires the data in code form. `dput` will 
+produce runnable code, but the result is not very readable. `write.so` and its 
+alias `write_so` take a data frame and restructure the results of `dput` to 
+make it an ordinary `data.frame`, `data_frame`, `tibble`, or `data.table` call. 
+The call is printed to the console and by default copied to the clipboard. A 
+language object version of the call is returned, invisibly.
+
+```{r write.so}
+options(read.so.write_clip = FALSE)    # don't write to clipboard by default
+
+write.so(head(swiss))
+
+write_so(head(tibble::as_tibble(swiss)), indent = 2)
+```
+
+## Related packages
+
+- [reprex](http://reprex.tidyverse.org/): A great way to generate reproducible 
+    examples. read.so is [mostly] for when people don't use reprex. You should 
+    use reprex.
+- [datapasta](https://github.com/MilesMcBain/datapasta): A broader approach to 
+    getting data from the clipboard into R code containing alternatives to 
+    `write.so`. If you like `tibble::tribble`, you'll like this package.

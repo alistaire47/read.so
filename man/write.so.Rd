@@ -34,7 +34,10 @@ returns the call invisibly.
 \description{
 \code{write.so} writes a call to produce the specified data frame to the console
 or a specified connection. The function used to recreate the data frame in
-the output is determined by the class of the input. \code{write_so} is an alias.
+the output is determined by the class of the input.
+}
+\details{
+\code{write_so} is an alias; data frame class is determined by input class.
 }
 \examples{
 write.so(head(iris))

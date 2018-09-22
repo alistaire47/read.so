@@ -5,9 +5,9 @@
 \alias{read_str}
 \title{Read the results of \code{str.data.frame} back into a data frame}
 \usage{
-read.str(file = readr::clipboard())
+read.str(file = clipr::read_clip())
 
-read_str(file = readr::clipboard())
+read_str(file = clipr::read_clip())
 }
 \arguments{
 \item{file}{Character. A path to a file, a connection, or literal
