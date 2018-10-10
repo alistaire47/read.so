@@ -27,13 +27,14 @@ write.so <- function(x, file = stdout(),
                      indent = getOption("read.so.indent", 4),
                      tbl_fun = c("data_frame", "tibble")){
     name <- substitute(x)
-    name <- unlist(lapply(name, function(n){    # search call for name
+    name <- lapply(name, function(n){    # search call for name
         if (is.name(n) && tryCatch(!is.function(eval(n)),
                                    error = function(e) FALSE)) {
             return(n)
         }
         if (is.call(n)) Recall(n[[2]])    # recurse on args
-    }))[[1]]
+    })
+    name <- name[!vapply(name, is.null, logical(1))][[1]]
     tbl_fun <- match.arg(tbl_fun)
 
     dput_string <- paste(utils::capture.output(dput(x)), collapse = " ")
