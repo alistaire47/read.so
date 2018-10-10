@@ -1,8 +1,10 @@
 #' Write a text representation of a data frame
 #'
-#' `write.so` writes a call to produce the specified data frame to the console
-#' or a specified connection. The function used to recreate the data frame in
-#' the output is determined by the class of the input.
+#' `write.so` writes a call to produce—and when possible, assign—the specified
+#' data frame to the console or a specified connection. The function used to
+#' recreate the data frame in the output is determined by the class of the
+#' input. Names for assignment are taken from names found in the argument to
+#' `x`. If no name is found, the call is returned without assignment.
 #'
 #' `write_so` is an alias; data frame class is determined by input class.
 #'
@@ -24,6 +26,17 @@ write.so <- function(x, file = stdout(),
                      write_clip = getOption("read.so.write_clip", TRUE),
                      indent = getOption("read.so.indent", 4),
                      tbl_fun = c("data_frame", "tibble")){
+    name <- substitute(x)
+    name <- unlist(lapply(name, function(n){    # search call for name
+        if (is.name(n) && tryCatch(!is.function(eval(n)),
+                                   error = function(e) FALSE)) {
+            return(n)
+        }
+        if (is.call(n)) Recall(n[[2]])    # recurse on args
+    }))[[1]]
+    # if (!is.name(name)) {
+    #     name <- name[[2]]    # grabs input to `head`, `%>%`, etc.
+    # }
     tbl_fun <- match.arg(tbl_fun)
 
     dput_string <- paste(utils::capture.output(dput(x)), collapse = " ")
@@ -55,6 +68,11 @@ write.so <- function(x, file = stdout(),
     cols <- paste(names(cols), cols, sep = " = ", collapse = paste0(",\n", indent))
     # re-add data.frame call
     df_text <- paste0(df_fun, "(\n", indent, cols, "\n)")
+
+    if (is.name(name)) {    # skip assigment if no name
+        df_text <- paste(name, "<-", df_text)
+        df_call <- bquote(.(name) <- .(df_call))
+    }
 
     cat(df_text, file = file)
 
