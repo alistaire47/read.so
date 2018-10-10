@@ -34,7 +34,8 @@ write.so <- function(x, file = stdout(),
         }
         if (is.call(n)) Recall(n[[2]])    # recurse on args
     })
-    name <- name[!vapply(name, is.null, logical(1))][[1]]
+    name <- name[!vapply(name, is.null, logical(1))]    # remove nulls
+    name <- if (length(name) > 0) name[[1]] else NULL
     tbl_fun <- match.arg(tbl_fun)
 
     dput_string <- paste(utils::capture.output(dput(x)), collapse = " ")
