@@ -248,16 +248,17 @@ to construct a reproducible response requires the data in code form.
 `dput` will produce runnable code, but the result is not very readable.
 `write.so` and its alias `write_so` take a data frame and restructure
 the results of `dput` to make it an ordinary `data.frame`, `data_frame`,
-`tibble`, or `data.table` call. The call is printed to the console and
-by default copied to the clipboard. A language object version of the
-call is returned,
+`tibble`, or `data.table` call, and when a name is detected, reassemble
+assignment to that variable. The call is printed to the console and by
+default copied to the clipboard. A language object version of the call
+is returned,
 invisibly.
 
 ``` r
 options(read.so.write_clip = FALSE)    # don't write to clipboard by default
 
 write.so(head(swiss))
-#> data.frame(
+#> swiss <- data.frame(
 #>     Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9, 76.1),
 #>     Agriculture = c(17, 45.1, 39.7, 36.5, 43.5, 35.3),
 #>     Examination = c(15L, 6L, 5L, 12L, 17L, 9L),
@@ -267,7 +268,7 @@ write.so(head(swiss))
 #> )
 
 write_so(head(tibble::as_tibble(swiss)), indent = 2)
-#> data_frame(
+#> swiss <- data_frame(
 #>   Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9, 76.1),
 #>   Agriculture = c(17, 45.1, 39.7, 36.5, 43.5, 35.3),
 #>   Examination = c(15L, 6L, 5L, 12L, 17L, 9L),

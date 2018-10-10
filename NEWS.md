@@ -1,7 +1,7 @@
 # read.so 0.1.0
 
 * Adds `write.so` and `write_so`, which output clean code and calls to 
-  reproduce a data frame.
+  reproduce and assign a data frame.
 
 * `read_glimpse` handles the new behavior of `glimpse` with single character 
   ellipses.

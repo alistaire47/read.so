@@ -32,9 +32,11 @@ Prints the call to produce the input to the specified connection;
 returns the call invisibly.
 }
 \description{
-\code{write.so} writes a call to produce the specified data frame to the console
-or a specified connection. The function used to recreate the data frame in
-the output is determined by the class of the input.
+\code{write.so} writes a call to produce—and when possible, assign—the specified
+data frame to the console or a specified connection. The function used to
+recreate the data frame in the output is determined by the class of the
+input. Names for assignment are taken from names found in the argument to
+\code{x}. If no name is found, the call is returned without assignment.
 }
 \details{
 \code{write_so} is an alias; data frame class is determined by input class.
