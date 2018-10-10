@@ -34,9 +34,6 @@ write.so <- function(x, file = stdout(),
         }
         if (is.call(n)) Recall(n[[2]])    # recurse on args
     }))[[1]]
-    # if (!is.name(name)) {
-    #     name <- name[[2]]    # grabs input to `head`, `%>%`, etc.
-    # }
     tbl_fun <- match.arg(tbl_fun)
 
     dput_string <- paste(utils::capture.output(dput(x)), collapse = " ")
