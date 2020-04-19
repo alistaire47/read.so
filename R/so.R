@@ -35,22 +35,20 @@
 #' @return For `read.so` a data.frame; for `read_so`, a tibble.
 #'
 #' @examples
-#'
 #' lines.df <- capture.output(head(iris))
-#'
 #' lines_tbl <- capture.output(head(tibble::as_tibble(iris)))
 #'
 #' read.so(lines.df)
 #'
 #' read_so(lines.df)
 #'
-#' # Data has extra metadata lines, so normal reading fails:
 #' \dontrun{
+#' # Data has extra metadata lines, so normal reading fails:
 #' read.so(lines_tbl)
-#' }
 #'
 #' # ...but can work:
 #' read.so(lines_tbl, comment = '<', skip = 1)
+#' }
 #'
 #' # Alternately, use the purpose-built function:
 #' read_so(lines_tbl)
@@ -91,7 +89,7 @@ read_so <- function(file = clipr::read_clip(),
     } else {
         lines <- file
     }
-    lines <- lines[!grepl('(^\\s*\\*?\\s*(<\\w+>\\s*)+$)|(^\\s*#)', lines)]
+    lines <- lines[!grepl('(^\\s*\\*?\\s*(\\S*<\\w+>\\S*\\s*)+$)|(^\\s*\\S*#)', lines)]
     if (missing(row_names)) {
         row_names <- do.call(`!=`, lapply(gregexpr("\\S+", lines[1:2]), length))
     }

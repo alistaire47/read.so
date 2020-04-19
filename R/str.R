@@ -50,13 +50,18 @@ read.str <- function(file = clipr::read_clip()){
         lns <- file
     }
 
-    df_cls <- gsub('^Classes | and |[,"\'\u2018\u2019]|:.*$', ' ', lns[1])
-    df_cls <- scan(text = df_cls, what = character(), quiet = TRUE)
+    if (grepl("S3", lns[1])) {
+        df_cls <- sub('.*\\(S3: (\\S+)\\).*', '\\1', lns[1])
+        df_cls <- strsplit(df_cls, split = "/")[[1]]
+    } else {
+        df_cls <- gsub('^Classes | and |[,"\'\u2018\u2019]|:.*$', ' ', lns[1])
+        df_cls <- scan(text = df_cls, what = character(), quiet = TRUE)
+    }
 
     lns <- lns[grep('^\\s*\\$', lns)]    # ignores attributes
     lns <- gsub('\\s*\\$\\s*|\\s*\\.+\\s*$', '', lns)
     nms <- sub('\\s*:.*', '', lns)
-    lns <- sub('^.*?:\\s+', '', lns)
+    lns <- sub('^.*?:\\s+(?:\\[\\d+\\:\\d+\\])?(.*)', '\\1', lns)
 
     is_fac <- grepl('^Factor|^Ord.factor', lns)
 
@@ -64,7 +69,7 @@ read.str <- function(file = clipr::read_clip()){
     var_cls[is_fac] <- sub(':.*?$', '', lns[is_fac])    # levels still need parsing
     lns[is_fac] <- sub('.*:\\s*', '', lns[is_fac])
     var_cls[!is_fac] <- sub('^(\\S*).*', '\\1', lns[!is_fac])
-    lns[!is_fac] <- sub('^\\S*\\s*', '', lns[!is_fac])
+    lns[!is_fac] <- sub('^\\S*\\s*(\\[\\d+\\:\\d+\\]\\s+)?', '', lns[!is_fac])
 
     dat <- lapply(lns, function(x){
         scan(text = x, what = character(), quiet = TRUE)
@@ -157,10 +162,10 @@ read_glimpse <- function(file = clipr::read_clip(),
     }
 
     lns <- lns[grep('\\s*\\$', lns)]    # subset to variable lines
-    lns <- gsub('^\\s*\\$\\s|,[^,"]*?$|\u2026$', '', lns)    # remove start/end cruft
-    nms <- sub('\\s*<.*$', '', lns)
+    lns <- gsub('^\\s*\\$\\s|,[^,"\\s]*?(\u2026|\\.{3})$', '', lns)    # remove start/end cruft
+    nms <- sub('\\s*\\S*<.*$', '', lns)
     cls <- sub('.*<(\\w+)>.*', '\\1', lns)
-    lns <- sub('.*>\\s*', '', lns)
+    lns <- sub('.*>\\S*\\s*', '', lns)
 
     dat <- lapply(lns, function(ln){
         # handle quoted strings/factors

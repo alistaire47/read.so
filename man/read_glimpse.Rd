@@ -5,8 +5,10 @@
 \alias{read.glimpse}
 \title{Read the results of \code{tibble::glimpse} back into a data frame}
 \usage{
-read_glimpse(file = clipr::read_clip(), class = c("tbl_df", "tbl",
-  "data.frame"))
+read_glimpse(
+  file = clipr::read_clip(),
+  class = c("tbl_df", "tbl", "data.frame")
+)
 
 read.glimpse(file = clipr::read_clip(), class = "data.frame")
 }

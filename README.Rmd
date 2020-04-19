@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "README-"
 )
+Sys.setenv(CLIPR_ALLOW = TRUE)
 ```
 
 # read.so
@@ -132,7 +133,7 @@ The reading functions make it easy to get a question's data into R, but to
 construct a reproducible response requires the data in code form. `dput` will 
 produce runnable code, but the result is not very readable. `write.so` and its 
 alias `write_so` take a data frame and restructure the results of `dput` to 
-make it an ordinary `data.frame`, `data_frame`, `tibble`, or `data.table` call, 
+make it an ordinary `data.frame`, `tibble`, or `data.table` call, 
 and when a name is detected, reassemble assignment to that variable. The call 
 is printed to the console and by default copied to the clipboard. A language 
 object version of the call is returned, invisibly.

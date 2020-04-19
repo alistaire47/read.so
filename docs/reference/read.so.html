@@ -8,21 +8,29 @@
 
 <title>Read data pasted from R printing into a data frame — read.so • read.so</title>
 
+
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,16 +38,17 @@
 
 
 
-<meta property="og:title" content="Read data pasted from R printing into a data frame — read.so" />
 
+<meta property="og:title" content="Read data pasted from R printing into a data frame — read.so" />
 <meta property="og:description" content="read.so and read_so read data copied from R print methods into a
 data.frame or tibble, respectively." />
-<meta name="twitter:card" content="summary" />
+
 
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,9 +56,10 @@ data.frame or tibble, respectively." />
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -63,7 +73,7 @@ data.frame or tibble, respectively." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">read.so</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -71,7 +81,7 @@ data.frame or tibble, respectively." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -82,11 +92,10 @@ data.frame or tibble, respectively." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alistaire47/read.so">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/alistaire47/read.so/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -97,6 +106,7 @@ data.frame or tibble, respectively." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -108,18 +118,20 @@ data.frame or tibble, respectively." />
     </div>
 
     <div class="ref-description">
-    
     <p><code>read.so</code> and <code>read_so</code> read data copied from R print methods into a
 data.frame or tibble, respectively.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>read.so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>na.strings</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"NA"</span>, <span class='st'>"&lt;NA&gt;"</span>), <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>read.so</span>(
+  <span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/clipr/man/read_clip.html'>read_clip</a></span>(),
+  <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>na.strings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"NA"</span>, <span class='st'>"&lt;NA&gt;"</span>),
+  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>...</span>
+)
 
-<span class='fu'>read_so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>read_clip</a></span>(), <span class='no'>row_names</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"NA"</span>, <span class='st'>"&lt;NA&gt;"</span>),
-  <span class='no'>...</span>)</pre>
-    
+<span class='fu'>read_so</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='kw pkg'>clipr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/clipr/man/read_clip.html'>read_clip</a></span>(), <span class='no'>row_names</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"NA"</span>, <span class='st'>"&lt;NA&gt;"</span>), <span class='no'>...</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -140,11 +152,11 @@ reads from the clipboard.</p></td>
     <tr>
       <th>stringsAsFactors</th>
       <td><p>Logical. Indicates whether to convert string columns
-to factors. Passed along to <code>read.table()</code>.</p></td>
+to factors. Passed along to <code><a href='https://rdrr.io/r/utils/read.table.html'>read.table()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed along to <code>read.table()</code> or <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_table'>readr::read_table2()</a></code> by
+      <td><p>Passed along to <code><a href='https://rdrr.io/r/utils/read.table.html'>read.table()</a></code> or <code><a href='https://readr.tidyverse.org/reference/read_table.html'>readr::read_table2()</a></code> by
 <code>read.so</code> and <code>read_so</code>, respectively. Applied after tibble formatting
 lines have been removed.</p></td>
     </tr>
@@ -153,15 +165,14 @@ lines have been removed.</p></td>
       <td><p>Logical. Indicates whether the input contains a column of
 row names. If missing, guesses based on the number of elements in the
 header and first row. Row names are removed by <code>read_so</code>; to keep them,
-use <code>read.so</code>. For row names with spaces, try <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_table'>readr::read_table()</a></code>
-or <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_fwf'>readr::read_fwf()</a></code>.</p></td>
+use <code>read.so</code>. For row names with spaces, try <code><a href='https://readr.tidyverse.org/reference/read_table.html'>readr::read_table()</a></code>
+or <code><a href='https://readr.tidyverse.org/reference/read_fwf.html'>readr::read_fwf()</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>For <code>read.so</code> a data.frame; for <code>read_so</code>, a tibble.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>read.so</code> is designed to read the print method of a data.frame back into R,
@@ -174,14 +185,11 @@ column metadata lines.</p>
 these functions are built for interactive use, they are built to accept a
 single string containing the data (distinguished from a filepath by the
 presence of a newline) or a vector of lines, as may be generated by
-<code><a href='http://www.rdocumentation.org/packages/clipr/topics/read_clip'>clipr::read_clip()</a></code>.</p>
-    
+<code><a href='https://rdrr.io/pkg/clipr/man/read_clip.html'>clipr::read_clip()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='no'>lines.df</span> <span class='kw'>&lt;-</span> <span class='fu'>capture.output</span>(<span class='fu'>head</span>(<span class='no'>iris</span>))
-
-<span class='no'>lines_tbl</span> <span class='kw'>&lt;-</span> <span class='fu'>capture.output</span>(<span class='fu'>head</span>(<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/as_tibble'>as_tibble</a></span>(<span class='no'>iris</span>)))
+    <pre class="examples"><div class='input'><span class='no'>lines.df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/capture.output.html'>capture.output</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>iris</span>))
+<span class='no'>lines_tbl</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/capture.output.html'>capture.output</a></span>(<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span>(<span class='no'>iris</span>)))
 
 <span class='fu'>read.so</span>(<span class='no'>lines.df</span>)</div><div class='output co'>#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 #&gt; 1          5.1         3.5          1.4         0.2  setosa
@@ -190,63 +198,50 @@ presence of a newline) or a vector of lines, as may be generated by
 #&gt; 4          4.6         3.1          1.5         0.2  setosa
 #&gt; 5          5.0         3.6          1.4         0.2  setosa
 #&gt; 6          5.4         3.9          1.7         0.4  setosa</div><div class='input'>
-<span class='fu'>read_so</span>(<span class='no'>lines.df</span>)</div><div class='output co'>#&gt; [90m# A tibble: 6 x 5[39m
+<span class='fu'>read_so</span>(<span class='no'>lines.df</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 5</span><span>
 #&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-#&gt;          [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m        [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m  
-#&gt; [90m1[39m          5.1         3.5          1.4         0.2 setosa 
-#&gt; [90m2[39m          4.9         3            1.4         0.2 setosa 
-#&gt; [90m3[39m          4.7         3.2          1.3         0.2 setosa 
-#&gt; [90m4[39m          4.6         3.1          1.5         0.2 setosa 
-#&gt; [90m5[39m          5           3.6          1.4         0.2 setosa 
-#&gt; [90m6[39m          5.4         3.9          1.7         0.4 setosa </div><div class='input'>
-# Data has extra metadata lines, so normal reading fails:
-</div><div class='input'><span class='fu'>read.so</span>(<span class='no'>lines_tbl</span>)</div><div class='output co'>#&gt; <span class='error'>Error in utils::read.table(text = file, header = header, na.strings = na.strings,     stringsAsFactors = stringsAsFactors, ...): more columns than column names</span></div><div class='input'>
+#&gt;          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'>1</span><span>          5.1         3.5          1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>2</span><span>          4.9         3            1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>3</span><span>          4.7         3.2          1.3         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>4</span><span>          4.6         3.1          1.5         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>5</span><span>          5           3.6          1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>6</span><span>          5.4         3.9          1.7         0.4 setosa </div><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'># Data has extra metadata lines, so normal reading fails:</span>
+<span class='fu'>read.so</span>(<span class='no'>lines_tbl</span>)
+
 <span class='co'># ...but can work:</span>
-<span class='fu'>read.so</span>(<span class='no'>lines_tbl</span>, <span class='kw'>comment</span> <span class='kw'>=</span> <span class='st'>'&lt;'</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,     nmax = nrows, skip = 0, na.strings = na.strings, quiet = TRUE,     fill = fill, strip.white = strip.white, blank.lines.skip = blank.lines.skip,     multi.line = FALSE, comment.char = comment.char, allowEscapes = allowEscapes,     flush = flush, encoding = encoding, skipNul = skipNul): line 1 did not have 6 elements</span></div><div class='input'>
+<span class='fu'>read.so</span>(<span class='no'>lines_tbl</span>, <span class='kw'>comment</span> <span class='kw'>=</span> <span class='st'>'&lt;'</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+}
+
 <span class='co'># Alternately, use the purpose-built function:</span>
-<span class='fu'>read_so</span>(<span class='no'>lines_tbl</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: 8 parsing failures.</span>
-#&gt; <span class='warning'>row col  expected    actual         file</span>
-#&gt; <span class='warning'>  1  -- 6 columns 4 columns literal data</span>
-#&gt; <span class='warning'>  2  -- 6 columns 4 columns literal data</span>
-#&gt; <span class='warning'>  3  -- 6 columns 5 columns literal data</span>
-#&gt; <span class='warning'>  4  -- 6 columns 5 columns literal data</span>
-#&gt; <span class='warning'>  5  -- 6 columns 5 columns literal data</span>
-#&gt; <span class='warning'>... ... ......... ......... ............</span>
-#&gt; <span class='warning'>See problems(...) for more details.</span></div><div class='output co'>#&gt; [90m# A tibble: 8 x 6[39m
-#&gt;   `\033[90m#`       A            `tibble:`        `6`         x     `5\033[39m`
-#&gt;   [3m[90m&lt;chr&gt;[39m[23m             [3m[90m&lt;chr&gt;[39m[23m        [3m[90m&lt;chr&gt;[39m[23m            [3m[90m&lt;chr&gt;[39m[23m       [3m[90m&lt;chr&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m      
-#&gt; [90m1[39m Sepal.Width       Petal.Length Petal.Width      Species     [31mNA[39m    [31mNA[39m         
-#&gt; [90m2[39m [90m"[39m\u001b[3m\u001b… [90m"[39m\u001b[3m\… [90m"[39m\u001b[3m\u001… [90m"[39m\u001b[3m… [31mNA[39m    [31mNA[39m         
-#&gt; [90m3[39m 5.1               3.5          1.4              0.2         seto… [31mNA[39m         
-#&gt; [90m4[39m 4.9               3            1.4              0.2         seto… [31mNA[39m         
-#&gt; [90m5[39m 4.7               3.2          1.3              0.2         seto… [31mNA[39m         
-#&gt; [90m6[39m 4.6               3.1          1.5              0.2         seto… [31mNA[39m         
-#&gt; [90m7[39m 5                 3.6          1.4              0.2         seto… [31mNA[39m         
-#&gt; [90m8[39m 5.4               3.9          1.7              0.4         seto… [31mNA[39m         </div><div class='input'>
-</div></pre>
+<span class='fu'>read_so</span>(<span class='no'>lines_tbl</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 5</span><span>
+#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+#&gt;          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'>1</span><span>          5.1         3.5          1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>2</span><span>          4.9         3            1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>3</span><span>          4.7         3.2          1.3         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>4</span><span>          4.6         3.1          1.5         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>5</span><span>          5           3.6          1.4         0.2 setosa 
+#&gt; </span><span style='color: #555555;'>6</span><span>          5.4         3.9          1.7         0.4 setosa </div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
-  <p>Developed by Edward Visel.</p>
+  <p>Developed by <a href='https://alistaire.rbind.io/'>Edward Visel</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
@@ -254,6 +249,8 @@ presence of a newline) or a vector of lines, as may be generated by
 
   
 
+
   </body>
 </html>
+
 

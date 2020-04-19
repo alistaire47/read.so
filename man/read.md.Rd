@@ -5,8 +5,13 @@
 \alias{read_md}
 \title{Read a markdown table into a data frame}
 \usage{
-read.md(file = clipr::read_clip(), delim = "|",
-  stringsAsFactors = FALSE, strip.white = TRUE, ...)
+read.md(
+  file = clipr::read_clip(),
+  delim = "|",
+  stringsAsFactors = FALSE,
+  strip.white = TRUE,
+  ...
+)
 
 read_md(file = clipr::read_clip(), delim = "|", trim_ws = TRUE, ...)
 }

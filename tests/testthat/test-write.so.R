@@ -1,7 +1,7 @@
 context("write.so, write_so")
 
 options(read.so.write_clip = FALSE)
-data_frame <- tibble::data_frame
+tibble <- tibble::tibble
 data.table <- data.table::data.table
 
 test_that("expressions returned match original", {
@@ -26,7 +26,7 @@ test_that("running text output returns original", {
 })
 
 test_that("text output respects arguments", {
-    expect_output(write_so(tibble::as_tibble(iris)), "data_frame\\(")
+    expect_output(write_so(tibble::as_tibble(iris)), "tibble\\(")
     expect_output(write.so(tibble::as_tibble(iris), tbl_fun = "tibble"), "tibble\\(")
     expect_output(write.so(iris), "    Species")
     expect_output(write.so(iris, indent = 2), "  Species")

@@ -12,8 +12,8 @@
 #' @param file A connection or filename to which to print; passed to [`cat`].
 #' @param write_clip Logical. Write result to clipboard?
 #' @param indent The number of spaces by which to indent column definitions.
-#' @param tbl_fun The character function name to use to create tibbles, either
-#'     `"data_frame"` or `"tibble"`. Ignored for other cases.
+#' @param tbl_fun The character function name to use to create tibbles, i.e.
+#'     `"tibble"`. Ignored for other cases.
 #'
 #' @return Prints the call to produce the input to the specified connection;
 #'     returns the call invisibly.
@@ -25,7 +25,7 @@
 write.so <- function(x, file = stdout(),
                      write_clip = getOption("read.so.write_clip", TRUE),
                      indent = getOption("read.so.indent", 4),
-                     tbl_fun = c("data_frame", "tibble")){
+                     tbl_fun = c("tibble")){
     name <- substitute(x)
     name <- lapply(name, function(n){    # search call for name
         if (is.name(n) && tryCatch(!is.function(eval(n)),

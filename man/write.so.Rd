@@ -5,15 +5,21 @@
 \alias{write_so}
 \title{Write a text representation of a data frame}
 \usage{
-write.so(x, file = stdout(),
+write.so(
+  x,
+  file = stdout(),
   write_clip = getOption("read.so.write_clip", TRUE),
-  indent = getOption("read.so.indent", 4), tbl_fun = c("data_frame",
-  "tibble"))
+  indent = getOption("read.so.indent", 4),
+  tbl_fun = c("tibble")
+)
 
-write_so(x, file = stdout(),
+write_so(
+  x,
+  file = stdout(),
   write_clip = getOption("read.so.write_clip", TRUE),
-  indent = getOption("read.so.indent", 4), tbl_fun = c("data_frame",
-  "tibble"))
+  indent = getOption("read.so.indent", 4),
+  tbl_fun = c("tibble")
+)
 }
 \arguments{
 \item{x}{A data frame to write.}
@@ -24,8 +30,8 @@ write_so(x, file = stdout(),
 
 \item{indent}{The number of spaces by which to indent column definitions.}
 
-\item{tbl_fun}{The character function name to use to create tibbles, either
-\code{"data_frame"} or \code{"tibble"}. Ignored for other cases.}
+\item{tbl_fun}{The character function name to use to create tibbles, i.e.
+\code{"tibble"}. Ignored for other cases.}
 }
 \value{
 Prints the call to produce the input to the specified connection;

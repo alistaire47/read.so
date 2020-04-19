@@ -201,8 +201,7 @@ read.str(warp_lines)
 ### Read `tibble::glimpse` results back into a data frame
 
 Similarly, if the data was printed by `tibble::glimpse`, try
-`read.glimpse` or
-`read_glimpse`:
+`read.glimpse` or `read_glimpse`:
 
 ``` r
 states <- data.frame(state.name, state.abb, state.region, state.division, 
@@ -211,34 +210,34 @@ states <- data.frame(state.name, state.abb, state.region, state.division,
 states_lines <- capture.output(tibble::glimpse(states))
 
 states_lines
-#>  [1] "Observations: 50"                                                         
-#>  [2] "Variables: 15"                                                            
-#>  [3] "$ state.name     <fct> Alabama, Alaska, Arizona, Arkansas, California, C…"
-#>  [4] "$ state.abb      <fct> AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, I…"
-#>  [5] "$ state.region   <fct> South, West, West, South, West, West, Northeast, …"
-#>  [6] "$ state.division <fct> East South Central, Pacific, Mountain, West South…"
-#>  [7] "$ state.area     <dbl> 51609, 589757, 113909, 53104, 158693, 104247, 500…"
-#>  [8] "$ center.x       <dbl> -86.7509, -127.2500, -111.6250, -92.2992, -119.77…"
-#>  [9] "$ center.y       <dbl> 32.5901, 49.2500, 34.2192, 34.7336, 36.5341, 38.6…"
-#> [10] "$ Population     <dbl> 3615, 365, 2212, 2110, 21198, 2541, 3100, 579, 82…"
-#> [11] "$ Income         <dbl> 3624, 6315, 4530, 3378, 5114, 4884, 5348, 4809, 4…"
-#> [12] "$ Illiteracy     <dbl> 2.1, 1.5, 1.8, 1.9, 1.1, 0.7, 1.1, 0.9, 1.3, 2.0,…"
-#> [13] "$ Life.Exp       <dbl> 69.05, 69.31, 70.55, 70.66, 71.71, 72.06, 72.48, …"
-#> [14] "$ Murder         <dbl> 15.1, 11.3, 7.8, 10.1, 10.3, 6.8, 3.1, 6.2, 10.7,…"
-#> [15] "$ HS.Grad        <dbl> 41.3, 66.7, 58.1, 39.9, 62.6, 63.9, 56.0, 54.6, 5…"
-#> [16] "$ Frost          <dbl> 20, 152, 15, 65, 20, 166, 139, 103, 11, 60, 0, 12…"
-#> [17] "$ Area           <dbl> 50708, 566432, 113417, 51945, 156361, 103766, 486…"
+#>  [1] "Rows: 50"                                                                      
+#>  [2] "Columns: 15"                                                                   
+#>  [3] "$ state.name     <fct> Alabama, Alaska, Arizona, Arkansas, California, Colora…"
+#>  [4] "$ state.abb      <fct> AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN…"
+#>  [5] "$ state.region   <fct> South, West, West, South, West, West, Northeast, South…"
+#>  [6] "$ state.division <fct> East South Central, Pacific, Mountain, West South Cent…"
+#>  [7] "$ state.area     <dbl> 51609, 589757, 113909, 53104, 158693, 104247, 5009, 20…"
+#>  [8] "$ center.x       <dbl> -86.7509, -127.2500, -111.6250, -92.2992, -119.7730, -…"
+#>  [9] "$ center.y       <dbl> 32.5901, 49.2500, 34.2192, 34.7336, 36.5341, 38.6777, …"
+#> [10] "$ Population     <dbl> 3615, 365, 2212, 2110, 21198, 2541, 3100, 579, 8277, 4…"
+#> [11] "$ Income         <dbl> 3624, 6315, 4530, 3378, 5114, 4884, 5348, 4809, 4815, …"
+#> [12] "$ Illiteracy     <dbl> 2.1, 1.5, 1.8, 1.9, 1.1, 0.7, 1.1, 0.9, 1.3, 2.0, 1.9,…"
+#> [13] "$ Life.Exp       <dbl> 69.05, 69.31, 70.55, 70.66, 71.71, 72.06, 72.48, 70.06…"
+#> [14] "$ Murder         <dbl> 15.1, 11.3, 7.8, 10.1, 10.3, 6.8, 3.1, 6.2, 10.7, 13.9…"
+#> [15] "$ HS.Grad        <dbl> 41.3, 66.7, 58.1, 39.9, 62.6, 63.9, 56.0, 54.6, 52.6, …"
+#> [16] "$ Frost          <dbl> 20, 152, 15, 65, 20, 166, 139, 103, 11, 60, 0, 126, 12…"
+#> [17] "$ Area           <dbl> 50708, 566432, 113417, 51945, 156361, 103766, 4862, 19…"
 
 read_glimpse(states_lines)
-#> # A tibble: 3 x 15
-#>   state.name state.abb state.region state.division state.area center.x
-#> * <fct>      <fct>     <fct>        <fct>               <dbl>    <dbl>
-#> 1 Alabama    AL        South        East South Ce…      51609    -86.8
-#> 2 Alaska     AK        West         Pacific            589757   -127. 
-#> 3 Arizona    AZ        West         Mountain           113909   -112. 
-#> # … with 9 more variables: center.y <dbl>, Population <dbl>, Income <dbl>,
-#> #   Illiteracy <dbl>, Life.Exp <dbl>, Murder <dbl>, HS.Grad <dbl>,
-#> #   Frost <dbl>, Area <dbl>
+#> # A tibble: 4 x 15
+#>   state.name state.abb state.region state.division state.area center.x center.y
+#> * <fct>      <fct>     <fct>        <fct>               <dbl>    <dbl>    <dbl>
+#> 1 Alabama    AL        South        East South Ce…      51609    -86.8     32.6
+#> 2 Alaska     AK        West         Pacific            589757   -127.      49.2
+#> 3 Arizona    AZ        West         Mountain           113909   -112.      34.2
+#> 4 Arkansas   AR        South        West South Ce…      53104    -92.3     34.7
+#> # … with 8 more variables: Population <dbl>, Income <dbl>, Illiteracy <dbl>,
+#> #   Life.Exp <dbl>, Murder <dbl>, HS.Grad <dbl>, Frost <dbl>, Area <dbl>
 ```
 
 ## Generate pretty code to reproduce a data frame
@@ -247,11 +246,10 @@ The reading functions make it easy to get a question’s data into R, but
 to construct a reproducible response requires the data in code form.
 `dput` will produce runnable code, but the result is not very readable.
 `write.so` and its alias `write_so` take a data frame and restructure
-the results of `dput` to make it an ordinary `data.frame`, `data_frame`,
-`tibble`, or `data.table` call, and when a name is detected, reassemble
-assignment to that variable. The call is printed to the console and by
-default copied to the clipboard. A language object version of the call
-is returned,
+the results of `dput` to make it an ordinary `data.frame`, `tibble`, or
+`data.table` call, and when a name is detected, reassemble assignment to
+that variable. The call is printed to the console and by default copied
+to the clipboard. A language object version of the call is returned,
 invisibly.
 
 ``` r
@@ -268,7 +266,7 @@ write.so(head(swiss))
 #> )
 
 write_so(head(tibble::as_tibble(swiss)), indent = 2)
-#> swiss <- data_frame(
+#> swiss <- tibble(
 #>   Fertility = c(80.2, 83.1, 92.5, 85.8, 76.9, 76.1),
 #>   Agriculture = c(17, 45.1, 39.7, 36.5, 43.5, 35.3),
 #>   Examination = c(15L, 6L, 5L, 12L, 17L, 9L),

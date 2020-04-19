@@ -1,7 +1,16 @@
 Package: read.so
 Title: Read Tables from Stack Overflow Questions into R
-Version: 0.1.0
-Authors@R: person("Edward", "Visel", email = "edward.visel@gmail.com", role = c("aut", "cre"))
+Version: 0.1.1
+Authors@R:
+    c(
+        person(
+            given = "Edward",
+            family = "Visel",
+            role = c("aut", "cre"),
+            email = "edward.visel@gmail.com",
+            comment = c(ORCID = "0000-0002-2811-6254")
+        )
+    )
 Description: Sometimes you see a really interesting question on Stack Overflow, 
     but the asker only presents the data as a presentation-style table instead 
     of as runnable R code. Fear no more! read.so will turn even heinous tables 
@@ -18,9 +27,8 @@ Suggests:
     data.table, 
     knitr, 
     testthat
-Remotes: tidyverse/readr
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.0
