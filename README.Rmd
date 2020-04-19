@@ -26,9 +26,9 @@ Sys.setenv(CLIPR_ALLOW = TRUE)
 
 read.so is not on CRAN, but you can install it by running
 
-```{r install, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("alistaire47/read.so")
+``` r
+# install.packages("remotes")
+remotes::install_github("alistaire47/read.so")
 ```
 
 ---

@@ -16,8 +16,8 @@ Status](https://img.shields.io/codecov/c/github/alistaire47/read.so/master.svg)]
 read.so is not on CRAN, but you can install it by running
 
 ``` r
-install.packages("devtools")
-devtools::install_github("alistaire47/read.so")
+# install.packages("remotes")
+remotes::install_github("alistaire47/read.so")
 ```
 
 -----
